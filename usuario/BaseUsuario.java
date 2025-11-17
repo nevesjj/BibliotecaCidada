@@ -1,5 +1,7 @@
 package usuario;
 
+import java.util.Map;
+
 public abstract class BaseUsuario {
     private int id;
     private String nome;
@@ -29,5 +31,8 @@ public abstract class BaseUsuario {
     }
 
     public abstract String cadastrarUsuario(String nome, String email, String cpf);
-    public abstract String buscarUsuarioPorId(int id);
+
+    public Map<String, Object> buscarUsuarioPorId(int id) {
+        return this.dadosUsuario.buscarPorId(id);
+    };
 }

@@ -31,9 +31,4 @@ public class Aluno extends BaseUsuario {
 
         return "Novo usuário cadastrado com sucesso. ID: " + novoUsuario.get("id");
     }
-
-    @Override
-    public String buscarUsuarioPorId(int id) {
-        return "";
-    }
 }

@@ -1,12 +1,13 @@
 import usuario.Aluno;
 import usuario.DadosUsuario;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class BibliotecaCidada {
     public static void main(String[] args) {
-        DadosUsuario dados = new DadosUsuario();
-        Aluno aluno = new Aluno(dados);
+        DadosUsuario dadosUsuario = new DadosUsuario();
+        Aluno aluno = new Aluno(dadosUsuario);
 
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
@@ -19,30 +20,49 @@ public class BibliotecaCidada {
                     "3. Menu Biblioteca\n" +
                     "4. Relatorio\n");
             opcao = sc.nextInt();
+            sc.nextLine();
             switch (opcao) {
                 case 1:
                     System.out.println("*** MENU USUÁRIO ***\n" +
                             "Digite a opcao desejada:\n" +
                             "1. Cadastrar \n" +
-                            "2. Buscar \n " +
-                            "3. Editar\n" +
-                            "4. Remover \n"+
-                            "5. Voltar\n");
+                            "2. Buscar por ID \n " +
+                            "3. Listar usuários \n " +
+                            "4. Editar\n" +
+                            "5. Remover \n"+
+                            "6. Voltar\n");
                     opcaoUsuario = sc.nextInt();
+                    sc.nextLine();
 
                     switch (opcaoUsuario) {
                         case 1:
                             System.out.println("Digite nome do novo usuário: ");
                             String nome = sc.next();
+                            sc.nextLine();
 
                             System.out.println("Digite email do novo usuário: ");
                             String email = sc.next();
+                            sc.nextLine();
 
                             System.out.println("Digite CPF do novo usuário (ex: 12345678910): ");
                             String cpf = sc.next();
+                            sc.nextLine();
 
                             System.out.println(aluno.cadastrarUsuario(nome, email, cpf));
                             break;
+                        case 2:
+                            System.out.println("Digite ID: ");
+                            int id = sc.nextInt();
+                            sc.nextLine();
+
+                            Map<String, Object> usuario = dadosUsuario.buscarPorId(id);
+                            System.out.println("*** BUSCA DE USUÁRIO POR ID ***\n" +
+                                "ID: " + usuario.get("id") + "\n" +
+                                "Nome: " + usuario.get("nome") + "\n" +
+                                "Email: " + usuario.get("email") + "\n" +
+                                "ID: " + usuario.get("cpf") + "\n" +
+                                "Tipo: " + usuario.get("tipo") + "\n"
+                            );
                     }
                     break;
                 case 2:
