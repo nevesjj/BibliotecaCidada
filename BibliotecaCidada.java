@@ -1,9 +1,16 @@
+import usuario.Aluno;
+import usuario.DadosUsuario;
+
 import java.util.Scanner;
 
 public class BibliotecaCidada {
     public static void main(String[] args) {
+        DadosUsuario dados = new DadosUsuario();
+        Aluno aluno = new Aluno(dados);
+
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
+        int opcaoUsuario = 0;
         while (true) {
             System.out.println("*** Biblioteca Cidadã *** \n" +
                     "Digite a funcionalidade desejada: \n" +
@@ -21,6 +28,22 @@ public class BibliotecaCidada {
                             "3. Editar\n" +
                             "4. Remover \n"+
                             "5. Voltar\n");
+                    opcaoUsuario = sc.nextInt();
+
+                    switch (opcaoUsuario) {
+                        case 1:
+                            System.out.println("Digite nome do novo usuário: ");
+                            String nome = sc.next();
+
+                            System.out.println("Digite email do novo usuário: ");
+                            String email = sc.next();
+
+                            System.out.println("Digite CPF do novo usuário (ex: 12345678910): ");
+                            String cpf = sc.next();
+
+                            System.out.println(aluno.cadastrarUsuario(nome, email, cpf));
+                            break;
+                    }
                     break;
                 case 2:
                     System.out.println("*** MENU ACERVO ***\n" +
