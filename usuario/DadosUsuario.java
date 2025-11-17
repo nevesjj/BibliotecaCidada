@@ -49,4 +49,8 @@ public class DadosUsuario {
                 .findFirst()
                 .orElse(null);
     }
+
+    public List<Map<String, Object>> listarUsuarios() {
+        return usuarios;
+    }
 }

@@ -1,6 +1,7 @@
 import usuario.Aluno;
 import usuario.DadosUsuario;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -63,6 +64,23 @@ public class BibliotecaCidada {
                                 "ID: " + usuario.get("cpf") + "\n" +
                                 "Tipo: " + usuario.get("tipo") + "\n"
                             );
+                            break;
+                        case 3:
+                            List<Map<String, Object>> usuarios = dadosUsuario.listarUsuarios();
+
+                            System.out.println("*** LISTAR USUÁRIOS ***");
+
+                            for (int i = 0; i < usuarios.size(); i++) {
+                                Map<String, Object> usuarioAux = usuarios.get(i);
+
+                                System.out.println("*************************\n" +
+                                        "ID: " + usuarioAux.get("id") + "\n" +
+                                        "Nome: " + usuarioAux.get("nome") + "\n" +
+                                        "Email: " + usuarioAux.get("email") + "\n" +
+                                        "ID: " + usuarioAux.get("cpf") + "\n" +
+                                        "Tipo: " + usuarioAux.get("tipo") + "\n"
+                                );
+                            }
                     }
                     break;
                 case 2:
