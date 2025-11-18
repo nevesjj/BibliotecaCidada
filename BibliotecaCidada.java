@@ -1,7 +1,4 @@
-import usuario.Aluno;
-import usuario.DadosUsuario;
-import usuario.Servidor;
-import usuario.TipoUsuario;
+import usuario.*;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +9,7 @@ public class BibliotecaCidada {
         DadosUsuario dadosUsuario = new DadosUsuario();
         Aluno aluno = new Aluno(dadosUsuario);
         Servidor servidor = new Servidor(dadosUsuario);
+        Visitante visitante = new Visitante(dadosUsuario);
 
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
@@ -68,6 +66,7 @@ public class BibliotecaCidada {
 
                             if (tipoCadastro == 1) System.out.println(aluno.cadastrarUsuario(nome, email, cpf));
                             if (tipoCadastro == 2) System.out.println(servidor.cadastrarUsuario(nome, email, cpf));
+                            if (tipoCadastro == 3) System.out.println(visitante.cadastrarUsuario(nome, email, cpf));
                             break;
                         case 2:
                             System.out.println("Digite ID: ");
