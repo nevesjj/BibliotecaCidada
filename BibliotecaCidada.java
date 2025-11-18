@@ -1,6 +1,5 @@
 import acervo.DadosAcervo;
 import acervo.Livro;
-import acervo.TipoItem;
 import usuario.*;
 
 import java.util.HashMap;
@@ -214,6 +213,29 @@ public class BibliotecaCidada {
                             sc.nextLine();
 
                             if (tipo == 1) System.out.println(livro.cadastrarItem(titulo, genero, capitulos, anoPublicacao));
+
+                            break;
+                        case 2:
+                            System.out.println("*** BUSCAR ITEM POR ID ***");
+                            System.out.println("Digite ID: ");
+                            int id = sc.nextInt();
+                            sc.nextLine();
+
+                            Map<String, Object> item = dadosAcervo.buscarPorId(id);
+
+                            if (item == null) {
+                                System.out.println("Usuário não encontrado!");
+                            } else {
+                                System.out.println("*** BUSCA DE USUÁRIO POR ID ***\n" +
+                                        "ID: " + item.get("id") + "\n" +
+                                        "Título: " + item.get("titulo") + "\n" +
+                                        "Gênero: " + item.get("genero") + "\n" +
+                                        "Capítulos: " + item.get("capitulos") + "\n" +
+                                        "Ano de Publicação: " + item.get("anoPublicacao") + "\n" +
+                                        "Tipo: " + item.get("tipo") + "\n"
+                                );
+                            }
+                            break;
                     }
 
                     break;
