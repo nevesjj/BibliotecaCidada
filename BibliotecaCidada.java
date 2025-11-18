@@ -59,13 +59,18 @@ public class BibliotecaCidada {
                             sc.nextLine();
 
                             Map<String, Object> usuario = dadosUsuario.buscarPorId(id);
-                            System.out.println("*** BUSCA DE USUÁRIO POR ID ***\n" +
-                                "ID: " + usuario.get("id") + "\n" +
-                                "Nome: " + usuario.get("nome") + "\n" +
-                                "Email: " + usuario.get("email") + "\n" +
-                                "CPF: " + usuario.get("cpf") + "\n" +
-                                "Tipo: " + usuario.get("tipo") + "\n"
-                            );
+
+                            if (usuario == null) {
+                                System.out.println("Usuário não encontrado!");
+                            } else {
+                                System.out.println("*** BUSCA DE USUÁRIO POR ID ***\n" +
+                                        "ID: " + usuario.get("id") + "\n" +
+                                        "Nome: " + usuario.get("nome") + "\n" +
+                                        "Email: " + usuario.get("email") + "\n" +
+                                        "CPF: " + usuario.get("cpf") + "\n" +
+                                        "Tipo: " + usuario.get("tipo") + "\n"
+                                );
+                            }
                             break;
                         case 3:
                             List<Map<String, Object>> usuarios = dadosUsuario.listarUsuarios();
@@ -84,6 +89,8 @@ public class BibliotecaCidada {
                                         "*************************"
                                 );
                             }
+
+                            break;
                         case 4:
                             System.out.println("*** EDITAR USUÁRIO ***");
                             System.out.println("Digite ID: ");
@@ -126,6 +133,16 @@ public class BibliotecaCidada {
                             );
 
                             break;
+                        case 5:
+                            System.out.println("*** REMOVER USUÁRIO ***");
+                            System.out.println("Digite ID: ");
+                            int idRemove = sc.nextInt();
+                            sc.nextLine();
+
+                            System.out.println(dadosUsuario.removerUsuario(idRemove));
+                            break;
+                        default:
+                            System.out.println("Opção inválida!");
                     }
                     break;
                 case 2:

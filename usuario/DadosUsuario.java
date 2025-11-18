@@ -50,6 +50,17 @@ public class DadosUsuario {
                 .orElse(null);
     }
 
+    public String removerUsuario(int id) {
+        Map<String, Object> usuario = buscarPorId(id);
+
+        if (usuario == null) {
+            return "Usuário não encontrado";
+        }
+
+        usuarios.remove(usuario);
+        return "Usuario removido";
+    }
+
     public List<Map<String, Object>> listarUsuarios() {
         return usuarios;
     }
