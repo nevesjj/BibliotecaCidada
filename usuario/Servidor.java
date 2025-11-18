@@ -25,4 +25,8 @@ public class Servidor extends BaseUsuario {
 
         return "Novo usuário cadastrado com sucesso. ID: " + novoUsuario.get("id");
     }
+
+    public Map<String, Object> editarServidor(int id, String campo, String valor) {
+        return this.dadosUsuario.editarUsuarios(id, campo, valor);
+    }
 }

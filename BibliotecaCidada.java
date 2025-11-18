@@ -1,5 +1,6 @@
 import usuario.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -138,8 +139,10 @@ public class BibliotecaCidada {
                             String novoValor = sc.next();
                             sc.nextLine();
 
-                            Map<String, Object> usuarioEditado = aluno.editarAluno(idEdit, campo, novoValor);
-//                            if (usuarioEdit.get("tipo") == TipoUsuario.ALUNO)
+                            Map<String, Object> usuarioEditado = new HashMap<>();
+                            if (usuarioEdit.get("tipo") == TipoUsuario.ALUNO) usuarioEditado = aluno.editarAluno(idEdit, campo, novoValor);
+                            if (usuarioEdit.get("tipo") == TipoUsuario.SERVIDOR) usuarioEditado = servidor.editarServidor(idEdit, campo, novoValor);
+                            if (usuarioEdit.get("tipo") == TipoUsuario.VISITANTE) usuarioEditado = visitante.editarVisitante(idEdit, campo, novoValor);
 
                             System.out.println("*** USUÁRIO EDITADO ***\n" +
                                     "1. Nome: " + usuarioEditado.get("nome") + "\n" +
