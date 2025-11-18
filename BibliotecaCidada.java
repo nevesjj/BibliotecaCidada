@@ -1,5 +1,6 @@
 import usuario.Aluno;
 import usuario.DadosUsuario;
+import usuario.Servidor;
 import usuario.TipoUsuario;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class BibliotecaCidada {
     public static void main(String[] args) {
         DadosUsuario dadosUsuario = new DadosUsuario();
         Aluno aluno = new Aluno(dadosUsuario);
+        Servidor servidor = new Servidor(dadosUsuario);
 
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
@@ -39,6 +41,19 @@ public class BibliotecaCidada {
                     switch (opcaoUsuario) {
                         case 1:
                             System.out.println("*** CADASTRAR NOVO USUÁRIO ***");
+                            System.out.println("*** MENU USUÁRIO ***\n" +
+                                    "Digite o tipo de usuário para cadastro:\n" +
+                                    "1. ALUNO \n" +
+                                    "2. SERVIDOR \n " +
+                                    "3. VISITANTE \n ");
+                            int tipoCadastro = sc.nextInt();
+                            sc.nextLine();
+
+                            if (tipoCadastro < 1 || tipoCadastro > 3) {
+                                System.out.println("*** USUARIO INVALIDO ***");
+                                continue;
+                            }
+
                             System.out.println("Digite nome do novo usuário: ");
                             String nome = sc.next();
                             sc.nextLine();
@@ -51,7 +66,8 @@ public class BibliotecaCidada {
                             String cpf = sc.next();
                             sc.nextLine();
 
-                            System.out.println(aluno.cadastrarUsuario(nome, email, cpf));
+                            if (tipoCadastro == 1) System.out.println(aluno.cadastrarUsuario(nome, email, cpf));
+                            if (tipoCadastro == 2) System.out.println(servidor.cadastrarUsuario(nome, email, cpf));
                             break;
                         case 2:
                             System.out.println("Digite ID: ");
