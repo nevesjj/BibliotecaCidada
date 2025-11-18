@@ -31,8 +31,4 @@ public abstract class BaseUsuario {
     }
 
     public abstract String cadastrarUsuario(String nome, String email, String cpf);
-
-    public Map<String, Object> buscarUsuarioPorId(int id) {
-        return this.dadosUsuario.buscarPorId(id);
-    };
 }

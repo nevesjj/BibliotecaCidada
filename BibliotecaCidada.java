@@ -1,3 +1,6 @@
+import acervo.DadosAcervo;
+import acervo.Livro;
+import acervo.TipoItem;
 import usuario.*;
 
 import java.util.HashMap;
@@ -12,9 +15,11 @@ public class BibliotecaCidada {
         Servidor servidor = new Servidor(dadosUsuario);
         Visitante visitante = new Visitante(dadosUsuario);
 
+        DadosAcervo dadosAcervo = new DadosAcervo();
+        Livro livro = new Livro(dadosAcervo);
+
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
-        int opcaoUsuario = 0;
         while (true) {
             System.out.println("*** Biblioteca Cidadã *** \n" +
                     "Digite a funcionalidade desejada: \n" +
@@ -34,7 +39,7 @@ public class BibliotecaCidada {
                             "4. Editar\n" +
                             "5. Remover \n"+
                             "6. Voltar\n");
-                    opcaoUsuario = sc.nextInt();
+                    int opcaoUsuario = sc.nextInt();
                     sc.nextLine();
 
                     switch (opcaoUsuario) {
@@ -173,6 +178,44 @@ public class BibliotecaCidada {
                             "5. Remover Item por id\n"+
                             "6. Voltar\n"
                             );
+                    int opcaoAcervo = sc.nextInt();
+                    sc.nextLine();
+
+                    switch (opcaoAcervo) {
+                        case 1:
+                            System.out.println("*** CADASTRAR ITEM NO ACERVO ***");
+                            System.out.println(
+                                    "SELECIONE O TIPO DE ITEM\n" +
+                                    "1. LIVRO\n" +
+                                    "2. REVISTA\n" +
+                                    "3. MIDIA DIGITAL\n"
+                                    );
+                            int tipo = sc.nextInt();
+                            sc.nextLine();
+
+                            if (tipo < 1 || tipo > 3) {
+                                System.out.println("Opção inválida");
+                            }
+
+                            System.out.println("Digite o título do novo item: ");
+                            String titulo = sc.next();
+                            sc.nextLine();
+
+                            System.out.println("Digite o gênero do novo item: ");
+                            String genero = sc.next();
+                            sc.nextLine();
+
+                            System.out.println("Digite a quantidade de capitulos do novo item: ");
+                            int capitulos = sc.nextInt();
+                            sc.nextLine();
+
+                            System.out.println("Digite o ano de publicação (ex: 01/01/2020): ");
+                            String anoPublicacao = sc.next();
+                            sc.nextLine();
+
+                            if (tipo == 1) System.out.println(livro.cadastrarItem(titulo, genero, capitulos, anoPublicacao));
+                    }
+
                     break;
                 case 3:
                     System.out.println("*** MENU BIBLIOTECA ***\n" +
