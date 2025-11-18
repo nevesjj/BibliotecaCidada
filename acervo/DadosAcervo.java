@@ -45,4 +45,8 @@ public class DadosAcervo {
                 .findFirst()
                 .orElse(null);
     }
+
+    public List<Map<String, Object>> listarAcervo() {
+        return acervo;
+    }
 }

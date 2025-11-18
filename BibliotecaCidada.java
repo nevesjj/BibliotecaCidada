@@ -42,6 +42,7 @@ public class BibliotecaCidada {
                     sc.nextLine();
 
                     switch (opcaoUsuario) {
+                        // FUNCIONALIDADES DE USUÁRIOS
                         case 1:
                             System.out.println("*** CADASTRAR NOVO USUÁRIO ***");
                             System.out.println("*** MENU USUÁRIO ***\n" +
@@ -167,6 +168,8 @@ public class BibliotecaCidada {
                             System.out.println("Opção inválida!");
                     }
                     break;
+
+                // FUNCIONALIDADES DE ACERVO
                 case 2:
                     System.out.println("*** MENU ACERVO ***\n" +
                             "Digite a opcao desejada:\n" +
@@ -235,6 +238,26 @@ public class BibliotecaCidada {
                                         "Tipo: " + item.get("tipo") + "\n"
                                 );
                             }
+                            break;
+                        case 3:
+                            List<Map<String, Object>> acervo = dadosAcervo.listarAcervo();
+
+                            System.out.println("*** LISTAR TODO O ACERVO ***");
+
+                            for (int i = 0; i < acervo.size(); i++) {
+                                Map<String, Object> itemAcervo = acervo.get(i);
+
+                                System.out.println(
+                                        "ID: " + itemAcervo.get("id") + "\n" +
+                                                "Título: " + itemAcervo.get("titulo") + "\n" +
+                                                "Gênero: " + itemAcervo.get("genero") + "\n" +
+                                                "Capítulos: " + itemAcervo.get("capitulos") + "\n" +
+                                                "Ano de Publicação: " + itemAcervo.get("anoPublicacao ") + "\n" +
+                                                "Tipo: " + itemAcervo.get("tipo") + "\n" +
+                                                "*************************"
+                                );
+                            }
+
                             break;
                     }
 
