@@ -3,12 +3,6 @@ package usuario;
 import java.util.Map;
 
 public class Aluno extends BaseUsuario {
-    private int id;
-    private String nome;
-    private String email;
-    private String cpf;
-    private TipoUsuario tipo;
-
     public Aluno(DadosUsuario dadosUsuario) {
         super(dadosUsuario);
     }
@@ -30,5 +24,9 @@ public class Aluno extends BaseUsuario {
         Map<String, Object> novoUsuario = this.dadosUsuario.criarUsuario(nome, email, cpf, TipoUsuario.ALUNO);
 
         return "Novo usuário cadastrado com sucesso. ID: " + novoUsuario.get("id");
+    }
+
+    public Map<String, Object> editarAluno(int id, String campo, String valor) {
+        return this.dadosUsuario.editarUsuarios(id, campo, valor);
     }
 }

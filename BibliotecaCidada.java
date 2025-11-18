@@ -1,5 +1,6 @@
 import usuario.Aluno;
 import usuario.DadosUsuario;
+import usuario.TipoUsuario;
 
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,7 @@ public class BibliotecaCidada {
 
                     switch (opcaoUsuario) {
                         case 1:
+                            System.out.println("*** CADASTRAR NOVO USUÁRIO ***");
                             System.out.println("Digite nome do novo usuário: ");
                             String nome = sc.next();
                             sc.nextLine();
@@ -61,7 +63,7 @@ public class BibliotecaCidada {
                                 "ID: " + usuario.get("id") + "\n" +
                                 "Nome: " + usuario.get("nome") + "\n" +
                                 "Email: " + usuario.get("email") + "\n" +
-                                "ID: " + usuario.get("cpf") + "\n" +
+                                "CPF: " + usuario.get("cpf") + "\n" +
                                 "Tipo: " + usuario.get("tipo") + "\n"
                             );
                             break;
@@ -73,14 +75,57 @@ public class BibliotecaCidada {
                             for (int i = 0; i < usuarios.size(); i++) {
                                 Map<String, Object> usuarioAux = usuarios.get(i);
 
-                                System.out.println("*************************\n" +
+                                System.out.println(
                                         "ID: " + usuarioAux.get("id") + "\n" +
                                         "Nome: " + usuarioAux.get("nome") + "\n" +
                                         "Email: " + usuarioAux.get("email") + "\n" +
-                                        "ID: " + usuarioAux.get("cpf") + "\n" +
-                                        "Tipo: " + usuarioAux.get("tipo") + "\n"
+                                        "CPF: " + usuarioAux.get("cpf") + "\n" +
+                                        "Tipo: " + usuarioAux.get("tipo") + "\n" +
+                                        "*************************"
                                 );
                             }
+                        case 4:
+                            System.out.println("*** EDITAR USUÁRIO ***");
+                            System.out.println("Digite ID: ");
+                            int idEdit = sc.nextInt();
+                            sc.nextLine();
+
+                            Map<String, Object> usuarioEdit = dadosUsuario.buscarPorId(idEdit);
+                            System.out.println("*** SELECIONE QUAL CAMPO EDITAR ***\n" +
+                                    "1. Nome: " + usuarioEdit.get("nome") + "\n" +
+                                    "2. Email: " + usuarioEdit.get("email") + "\n" +
+                                    "3. CPF: " + usuarioEdit.get("cpf") + "\n"
+                            );
+                            int campoUsuario = sc.nextInt();
+                            sc.nextLine();
+
+                            String campo;
+                            switch (campoUsuario) {
+                                case 1: campo = "nome"; break;
+                                case 2: campo = "email"; break;
+                                case 3: campo = "cpf"; break;
+                                default: campo = "";
+                            }
+
+                            if (campo.equals("")) {
+                                System.out.println("Opção inválida");
+                                continue;
+                            }
+
+                            System.out.println("Digite novo valor para " + campo + " :");
+                            String novoValor = sc.next();
+                            sc.nextLine();
+
+                            Map<String, Object> usuarioEditado = aluno.editarAluno(idEdit, campo, novoValor);
+//                            if (usuarioEdit.get("tipo") == TipoUsuario.ALUNO)
+
+                            System.out.println("*** USUÁRIO EDITADO ***\n" +
+                                    "1. Nome: " + usuarioEditado.get("nome") + "\n" +
+                                    "2. Email: " + usuarioEditado.get("email") + "\n" +
+                                    "3. CPF: " + usuarioEditado.get("cpf") + "\n"
+                            );
+
+                            break;
                     }
                     break;
                 case 2:

@@ -53,4 +53,12 @@ public class DadosUsuario {
     public List<Map<String, Object>> listarUsuarios() {
         return usuarios;
     }
+
+    public Map<String, Object> editarUsuarios(int id, String campo, String valor) {
+        Map<String, Object> usuario = buscarPorId(id);
+
+        usuario.put(campo, valor);
+
+        return usuario;
+    }
 }
