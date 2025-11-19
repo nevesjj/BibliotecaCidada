@@ -57,4 +57,15 @@ public class DadosAcervo {
 
         return item;
     }
+
+    public String removerItem(int id) {
+        Map<String, Object> item = buscarPorId(id);
+
+        if (item == null) {
+            return "Item não encontrado";
+        }
+
+        acervo.remove(item);
+        return "Item removido";
+    }
 }

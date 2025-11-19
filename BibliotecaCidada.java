@@ -304,6 +304,16 @@ public class BibliotecaCidada {
                             );
 
                             break;
+                        case 5:
+                            System.out.println("*** REMOVER ITEM ***");
+                            System.out.println("Digite ID: ");
+                            int idRemove = sc.nextInt();
+                            sc.nextLine();
+
+                            System.out.println(dadosAcervo.removerItem(idRemove));
+                            break;
+                        default:
+                            System.out.println("Opção inválida!");
                     }
 
                     break;
