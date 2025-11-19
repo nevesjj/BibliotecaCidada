@@ -49,4 +49,12 @@ public class DadosAcervo {
     public List<Map<String, Object>> listarAcervo() {
         return acervo;
     }
+
+    public Map<String, Object> editarItem(int id, String campo, String valor) {
+        Map<String, Object> item = buscarPorId(id);
+
+        item.put(campo, valor);
+
+        return item;
+    }
 }

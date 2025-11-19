@@ -1,5 +1,7 @@
 package acervo;
 
+import java.util.Map;
+
 public abstract class BaseAcervo {
     private int id;
     private String titulo;
@@ -23,4 +25,5 @@ public abstract class BaseAcervo {
     }
 
     public abstract String cadastrarItem(String titulo, String genero, int capitulos, String anoPublicacao);
+    public abstract Map<String, Object> atualizarItem(int id, String campo, String valor);
 }

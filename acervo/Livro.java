@@ -23,4 +23,23 @@ public class Livro extends BaseAcervo {
 
         return "Novo livro cadastrado com sucesso. ID: " + novoItem.get("id");
     }
+
+    @Override
+    public Map<String, Object> atualizarItem(int id, String campo, String valor) {
+        if (campo.equals("capitulos") && Integer.parseInt(valor) < 3) {
+            System.out.println("Livro deve ter no minímo 3 capitulos");
+            return null;
+        }
+
+        if (campo.equals("titulo")) {
+            Map<String, Object> itemTitulo = this.dadosAcervo.buscarPorTitulo(valor);
+
+            if (itemTitulo != null) {
+                System.out.println("Título já cadastrado");
+                return null;
+            }
+        }
+
+        return this.dadosAcervo.editarItem(id, campo, valor);
+    }
 }

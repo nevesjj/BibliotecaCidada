@@ -1,5 +1,6 @@
 import acervo.DadosAcervo;
 import acervo.Livro;
+import acervo.TipoItem;
 import usuario.*;
 
 import java.util.HashMap;
@@ -257,6 +258,50 @@ public class BibliotecaCidada {
                                                 "*************************"
                                 );
                             }
+
+                            break;
+                        case 4:
+                            System.out.println("*** EDITAR ITEM DO ACERVO ***");
+                            System.out.println("Digite ID: ");
+                            int idEdit = sc.nextInt();
+                            sc.nextLine();
+
+                            Map<String, Object> itemEdit = dadosAcervo.buscarPorId(idEdit);
+                            System.out.println("*** SELECIONE QUAL CAMPO EDITAR ***\n" +
+                                    "1. Título: " + itemEdit.get("titulo") + "\n" +
+                                    "2. Gênero: " + itemEdit.get("genero") + "\n" +
+                                    "3. Capítulos: " + itemEdit.get("capitulos") + "\n" +
+                                    "3. Ano de Publicação: " + itemEdit.get("anoPublicacao") + "\n"
+                            );
+                            int campoItem = sc.nextInt();
+                            sc.nextLine();
+
+                            String campo = switch (campoItem) {
+                                case 1 -> "titulo";
+                                case 2 -> "genero";
+                                case 3 -> "capitulos";
+                                case 4 -> "anoPublicacao";
+                                default -> "";
+                            };
+
+                            if (campo.isEmpty()) {
+                                System.out.println("Opção inválida");
+                                continue;
+                            }
+
+                            System.out.println("Digite novo valor para " + campo + " :");
+                            String novoValor = sc.next();
+                            sc.nextLine();
+
+                            Map<String, Object> itemEditado = new HashMap<>();
+                            if (itemEdit.get("tipo") == TipoItem.LIVRO) itemEditado = livro.atualizarItem(idEdit, campo, novoValor);
+
+                            System.out.println("*** ITEM EDITADO ***\n" +
+                                    "1. Título: " + itemEditado.get("titulo") + "\n" +
+                                    "2. Gênero: " + itemEditado.get("genero") + "\n" +
+                                    "3. Capítulos: " + itemEditado.get("capitulos") + "\n" +
+                                    "4. Ano de Publicação: " + itemEditado.get("anoPublicacao") + "\n"
+                            );
 
                             break;
                     }
